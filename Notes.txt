@@ -1,0 +1,34 @@
+React filestructure
+https://reactjs.org/docs/faq-structure.html
+
+Weird react shit pasing functions to lower ellements
+ https://reactjs.org/docs/thinking-in-react.html
+
+Textarea
+https://www.w3schools.com/tags/tag_textarea.asp
+
+Style Textarea
+https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_contact_form
+https://www.w3schools.com/howto/howto_css_contact_form.asp
+https://developer.mozilla.org/en-US/docs/Web/HTML/Element/textarea
+
+File IO
+https://pkg.go.dev/os
+
+defering file.close()
+https://gobyexample.com/writing-files
+https://go.dev/tour/flowcontrol/12 
+
+Chat application baseline
+https://tutorialedge.net/projects/chat-system-in-go-and-react/part-2-simple-communication/
+
+
+Note To Self! Check out: 
+Generics in go
+https://go.dev/doc/tutorial/generics
+Web apps in go
+https://go.dev/doc/articles/wiki/
+Go code
+https://go.dev/doc/code
+Go fuzzing
+https://go.dev/doc/tutorial/fuzz

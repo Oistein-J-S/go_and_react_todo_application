@@ -1,0 +1,27 @@
+%%%%%%%% About: %%%%%%%%
+This file contains desired uppgrades, fixes and known bugs for the application
+
+%%%%%%%% Backend: %%%%%%%%
+TODO: Profile the application
+
+TODO: Subtasks
+TODO: Update and Delete functions (for more comprehensive fonctionality)
+TODO: Move task (up or down the list)
+TODO: Sort list
+
+###### Test ######
+Backend Testsuite
+TODO: description of test
+
+%%%%%%%% Frontend: %%%%%%%%
+TODO: Profile the application
+TODO: Implement https -> TODO: Reflect in backend
+
+###### Test ######
+Frontend Testsuite
+TODO: description of test
+
+%%%%%%%% Other: %%%%%%%%
+TODO: Graph and illustrate program flow
+TODO: Graph and illustrate http and websocket connections
+TODO: Graph and illustrate program ellements and structure
