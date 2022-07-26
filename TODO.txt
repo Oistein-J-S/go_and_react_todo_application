@@ -16,6 +16,7 @@ TODO: description of test
 %%%%%%%% Frontend: %%%%%%%%
 TODO: Profile the application
 TODO: Implement https -> TODO: Reflect in backend
+TODO: Check if something can be doen about hardcoded addresses in websocket.jsx
 
 ###### Test ######
 Frontend Testsuite
