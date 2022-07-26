@@ -92,9 +92,8 @@ func ReadTasks() []model.Task {
 	if len(state) != 0 {
 		err := json.Unmarshal(state, &tasks)
 		check(err)
-	} else { // File did not even contain an empty list
+	} else { // Error/fault: File did not even contain an empty list
 		// Allready have an empty list, logg and move on
-		//log.Println("Error: db file contained no empty list")
 		log.Println("Error: db file contained no readable data. Continuing without.")
 		// Could write an empty list to file, but the db should be self healing beyond this
 	}
