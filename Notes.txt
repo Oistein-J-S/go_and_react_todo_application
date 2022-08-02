@@ -32,3 +32,9 @@ Go code
 https://go.dev/doc/code
 Go fuzzing
 https://go.dev/doc/tutorial/fuzz
+
+React Manifest.json
+https://web.dev/add-manifest/
+Uppgrading go:
+https://gist.github.com/nikhita/432436d570b89cab172dcf2894465753
+https://www.practical-go-lessons.com/chap-39-upgrading-or-downgrading-go
