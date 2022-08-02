@@ -22,6 +22,8 @@ https://go.dev/tour/flowcontrol/12
 Chat application baseline
 https://tutorialedge.net/projects/chat-system-in-go-and-react/part-2-simple-communication/
 
+Installing NodeJS
+https://github.com/nodejs/help/wiki/Installation
 
 Note To Self! Check out: 
 Generics in go
