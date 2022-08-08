@@ -8,7 +8,8 @@ Node
 NPM
 react
 
-* The application has been tested in windos 10 and WSL2
+* The application has been tested in windos 10 and WSL2, and Ubuntu 21
+* It works with Chromium based browsers(Crhrome and Edge) and Firefox
 
 /************************* Genneral overwiew of the application ****************/
 Backend writen in go with a react frontend. 

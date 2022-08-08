@@ -5,6 +5,8 @@ The application represents a todo list.
 The frontend only displays 
 Requires NodeJS <= 14
 
+NB: The frontend assumes it is running on the same ip as the backend.
+
 # Functionality
 Create a task.
 Mark a tasks as completed (delete)
