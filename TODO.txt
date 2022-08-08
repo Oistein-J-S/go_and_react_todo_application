@@ -14,6 +14,7 @@ Backend Testsuite
 TODO: description of test
 
 %%%%%%%% Frontend: %%%%%%%%
+TODO: Adress functionality for local network needs to be dynamic.(Currently, the address of the server needs to be reapplied every time networks settings change)
 TODO: Profile the application
 TODO: Implement https -> TODO: Reflect in backend
 TODO: Check if something can be doen about hardcoded addresses in websocket.jsx

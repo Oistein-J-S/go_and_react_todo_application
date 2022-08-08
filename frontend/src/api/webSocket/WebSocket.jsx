@@ -1,8 +1,17 @@
 /* WebSocket API 
   Creates and manages new websocket for the frontend to use
   To work on the local network, the Websocket ned the adress to the backend.
-  If you run the front end NPM server and backen on the same machine
+  If you run the front end NPM server and backend on the same machine
   the adress given by npm can be used to replace 'loclahost'.
+
+  Example:
+  $npm start
+    .....
+    You can now view frontend in the browser.
+    Local:            http://localhost:3000
+    On Your Network:  http://10.10.0.1:3000
+  Then in code, use:
+  var socket = new WebSocket("ws://10.10.0.1:8080/ws");  
 
   Websocket_view is the corresponding backend class
 */
