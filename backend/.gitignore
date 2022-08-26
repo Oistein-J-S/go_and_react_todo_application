@@ -1,0 +1,5 @@
+# Production
+backend.exe
+
+# Database
+/lib/database/ToDoList.txt

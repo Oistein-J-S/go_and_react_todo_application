@@ -1,5 +1,2 @@
 # Production
 /.vscode
-
-# Database
-backend/lib/database/ToDoList.txt
