@@ -31,15 +31,15 @@ class Task extends Component {
   }
 
   render() {
-    return <div className="Task" >
-        Name: {this.props.task.name}, 
-        Description: {this.props.task.description},
-        <input type="checkbox" 
-          name={this.props.task.name} 
-          onChange={this.updateTask}
-          checked={this.props.task.isFinished}
-        >
-        </input>
+    return <div className = "Task" >
+        Name: {this.props.task.name},  
+        Description: {this.props.task.description} 
+        <div class = "divider" />
+        <button type = "button" 
+          name = {this.props.task.name} 
+          onClick = {this.updateTask}
+        > Delete
+        </button>
       </div>;
   }
 }

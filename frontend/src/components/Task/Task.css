@@ -12,3 +12,8 @@
     float: right;
     background-color: #328ec4;
 }
+.divider {
+    width:5px;
+    height:auto;
+    display:inline-block;
+}

@@ -17,6 +17,8 @@ TODO: description of test
 TODO: Profile the application
 TODO: Implement https -> TODO: Reflect in backend
 
+TODO: Language support
+
 ###### Test ######
 Frontend Testsuite
 TODO: description of test
