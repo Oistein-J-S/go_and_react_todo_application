@@ -10,6 +10,9 @@ import Header from './components/Header';
 import TaskHistory from './components/TaskHistory';
 import TaskInput from './components/TaskInput';
 
+// Import language ellements
+//import {UpdateTranslation} from "./locales/Translation";
+
 /* Application entrypoint */
 class App extends Component {
   constructor(props) {

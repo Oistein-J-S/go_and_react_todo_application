@@ -5,6 +5,7 @@
 import React, { Component } from "react";
 import "./TaskHistory.css";
 import Task from '../Task';
+import {TaskList} from "../../locales/Translation";
 
 class TaskHistory extends Component {
 
@@ -15,7 +16,7 @@ class TaskHistory extends Component {
       
     return (
       <div className="TaskHistory">
-        <h2>Task History</h2>
+        <h2>{TaskList}</h2>
         {tasks}
       </div>
     );
@@ -23,3 +24,12 @@ class TaskHistory extends Component {
 }
 
 export default TaskHistory;
+
+/*
+return (
+  <div className="TaskHistory">
+    <h2>Task History</h2>
+    {tasks}
+  </div>
+);
+*/
