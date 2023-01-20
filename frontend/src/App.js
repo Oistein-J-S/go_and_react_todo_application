@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+//import React, { useState } from "react";
+import React from "react";
 import './App.css'; // Main site styling
 
 // API for connection to Backend
@@ -10,16 +11,16 @@ import Header from './components/Header';
 import TaskHistory from './components/TaskHistory';
 import TaskInput from './components/TaskInput';
 
-// Import language ellements
-//import {UpdateTranslation} from "./locales/Translation";
+//Import language support
+import {languages, LocaleContext} from "./locales/Translation";
 
 /* Application entrypoint */
-class App extends Component {
+class App extends React.Component {
   constructor(props) {
     super(props);
       this.state = {taskHistory: []} // State Task storage
       this.hasTask = this.hasTask.bind(this) // Bind ellement to application context?
-  }
+  };
 
   /* Aqire a webSocket connection to the backend
   Mapp the socket endpoint to application state
@@ -104,11 +105,13 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
-        <TaskHistory taskHistory={this.state.taskHistory} />
-        <TaskInput 
-          onHasTask={this.hasTask} // Weird react shit https://reactjs.org/docs/thinking-in-react.html
-        />
+        <LocaleContext.Provider value = {languages.no}>
+          <Header />
+          <TaskHistory taskHistory={this.state.taskHistory} />
+          <TaskInput 
+            onHasTask={this.hasTask} // https://reactjs.org/docs/thinking-in-react.html
+          />
+          </LocaleContext.Provider>
       </div>
     );
   }

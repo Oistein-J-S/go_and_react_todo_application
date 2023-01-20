@@ -10,7 +10,7 @@ import "./Task.css";
 // Backend WebSocket API for connection
 import { sendMsg } from "../../api/webSocket";
 import {createMsg, Message_Type} from "../../api/message";
-import {Name, Description} from "../../locales/Translation";
+import { LocaleContext } from "../../locales/Translation";
 
 class Task extends Component {
   constructor(props) {
@@ -32,9 +32,10 @@ class Task extends Component {
   }
 
   render() {
+    let locale = this.context;
     return <div className = "Task" >
-        {Name}: {this.props.task.name},  
-        {Description}: {this.props.task.description} 
+        {locale.Name}: {this.props.task.name},  
+        {" " + locale.Description}: {this.props.task.description} 
         <div class = "divider" />
         <button type = "button" 
           name = {this.props.task.name} 
@@ -44,5 +45,7 @@ class Task extends Component {
       </div>;
   }
 }
+
+Task.contextType = LocaleContext;
 
 export default Task;
