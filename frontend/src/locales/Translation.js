@@ -14,6 +14,7 @@ export const languages = {
         Description: "Beskrivelse",
         NewTask: "Nytt Gjøremål",
         CreateNewTask: "Opprett Nytt Gjøremål"
+        // TODO: Alerts: Update Failed, Failed to delete task, Recived unknown message, Task must have a name, Task allready exists
     }, 
     // English
     en: {
@@ -23,6 +24,7 @@ export const languages = {
         Description: "Description",
         NewTask: "New Task",
         CreateNewTask: "Create New Task"
+        // TODO: Alerts: Update Failed, Failed to delete task, Recived unknown message, Task must have a name, Task allready exists
     }
 }; 
 
