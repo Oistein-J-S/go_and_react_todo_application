@@ -8,6 +8,7 @@ TODO: Subtasks
 TODO: Update and Delete functions (for more comprehensive fonctionality)
 TODO: Move task (up or down the list)
 TODO: Sort list
+TODO: Enforce unique key (name)
 
 ###### Test ######
 Backend Testsuite
