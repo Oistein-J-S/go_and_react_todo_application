@@ -11,6 +11,8 @@ import "./TaskInput.css";
 import {sendMsg} from "../../api/webSocket";
 import {createMsg, Message_Type} from "../../api/message";
 
+// Language
+import { LocaleContext } from "../../locales/Translation";
 
 class TaskInput extends Component {
   constructor(props){
@@ -59,29 +61,32 @@ class TaskInput extends Component {
   }
 
   render() {
+    let locale = this.context;
     return (
     <form className="TaskInput" onSubmit={this.handleSubmit}>
-        <h5>New Task</h5>
-        <label htmlFor='name'>Name: </label> 
+        <h5>{locale.NewTask}</h5>
+        <label htmlFor='name'>{locale.Name}: </label> 
         <input
           id='name'
-          placeholder='name'
+          placeholder={locale.Name}
           required
           value={this.state.name}
           onChange={this.handleChange}
         />
-        <label htmlFor='description'>Description</label> <br></br>
+        <label htmlFor='description'>{locale.Description}:</label> <br></br>
         <textarea
             id='description'
-            placeholder='Description'
+            placeholder={locale.Description}
             value={this.state.description}
             onChange={this.handleChange}
           /><br></br>
-        <button type="submit">Create Task</button>
+        <button type="submit">{locale.CreateNewTask}</button>
       </form>
     ); // End form
   } // End render
 } // End class
+
+TaskInput.contextType = LocaleContext;
 
 export default TaskInput;
 

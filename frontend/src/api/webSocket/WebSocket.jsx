@@ -8,7 +8,7 @@
 //the WebSocket
 //var socket = new WebSocket("ws://localhost:8080/ws"); // Disble encryption
 var socket = new WebSocket("ws://" + window.location.hostname + ":8080/ws");// Local network, no encryption
-//var socket = new WebSocket("wss://localhost:8080/ws"); // Enable encryption?
+//var socket = new WebSocket("wss://localhost:8080/ws"); // Enable encryption? TODO!
 
 // Conect to a WebSocket endpoint
 let connect = cb => {  

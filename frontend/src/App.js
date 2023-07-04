@@ -11,6 +11,9 @@ import Header from './components/Header';
 import TaskHistory from './components/TaskHistory';
 import TaskInput from './components/TaskInput';
 
+//Import language support
+import {languages, LocaleContext} from "./locales/Translation";
+
 /* Application entrypoint */
 function App() {
   const [taskHistory, setTaskHistory] = useState([]);
