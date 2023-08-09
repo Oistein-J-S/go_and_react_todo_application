@@ -1,6 +1,6 @@
 //import React, { useState } from "react";
 import React from "react";
-import './App.css'; // Main site styling
+import './App.css';
 
 // API for connection to Backend
 import {connect} from "./api/webSocket";
@@ -14,34 +14,28 @@ import TaskInput from './components/TaskInput';
 //Import language support
 import {languages, LocaleContext} from "./locales/Translation";
 
-/* Application entrypoint */
+// Application entrypoint
 class App extends React.Component {
   constructor(props) {
     super(props);
-      this.state = {taskHistory: []} // State Task storage
+      this.state = {taskState: []} // State Task storage
       this.hasTask = this.hasTask.bind(this) // Bind ellement to application context?
   };
 
-  /* Aqire a webSocket connection to the backend
-  Mapp the socket endpoint to application state
-  Import the current backend state */
+  // Aqire a webSocket connection to the backend and mapp the socket endpoint to application state
   componentDidMount() {
     console.log("Component did mount")
-    // Mapp the websocket connection to update state when reciving a message
-    connect( // WS Connection
-      (inp) => { // Mapp message to function
+    connect((inp) => { // Mapp message to function
       // unwrap to message
       let tskmsg = JSON.parse(inp.data)
       // m_type: New_Task
       if (tskmsg.m_type === Message_Type.New_Task){ 
-        if (this.hasTask(tskmsg.name)) { // If task exists
-          // Fail
+        if (this.hasTask(tskmsg.name)) { // Fail if task exists
           console.log("ERROR: Recived task that allready exists")
         } else { // ok New Task
           this.setState(prevState => ({ 
-          //this.setState({      
-            taskHistory: [...this.state.taskHistory, tskmsg]
-            /* spread opperator: Coppy and append */   
+            taskState: [...this.state.taskState, tskmsg]
+            // spread opperator: Coppy and append
           }))
         }
       } 
@@ -49,22 +43,19 @@ class App extends React.Component {
       else if (tskmsg.m_type === Message_Type.Update_Task){
         let err = this.UpdateTask(tskmsg.name)
         if (err){ 
-          alert(`____ALERT____\n
-          Update failed!\n`)  
+          alert(`____ALERT____\n Update failed!\n`)  
         }
       }
       // m_type: Delete_Task
       else if (tskmsg.m_type === Message_Type.Delete_Task){
         let err = this.DeleteTask(tskmsg.name)
         if (err){ 
-          alert(`____ALERT____\n
-          Failed to delete task!\n`)  
+          alert(`____ALERT____\n Failed to delete task!\n`)  
         }
       }
       //m_type: fail
       else {
-        alert(`____ALERT____\n
-        Recived unknown message!\n
+        alert(`____ALERT____\n Recived unknown message!\n
         ${tskmsg} \n`)  
       }
     });
@@ -72,7 +63,7 @@ class App extends React.Component {
 
   // Check if a task allready exists
   hasTask(name) {
-    for (let tsk of this.state.taskHistory){ // this.state.taskHistory
+    for (let tsk of this.state.taskState){
       if (tsk.name === name) { // Task found
         return true
       }
@@ -83,23 +74,22 @@ class App extends React.Component {
   // Change the state (isFinished) of a task
   UpdateTask(name) {
     // find task and index
-    for (let [i, tsk] of this.state.taskHistory.entries()){ 
+    for (let [i, tsk] of this.state.taskState.entries()){ 
       if (tsk.name === name) { // Task found
-          let newTaskHistory = [...this.state.taskHistory] // copy imutable array
-          newTaskHistory[i].isFinished = !tsk.isFinished // change ellement
-          this.setState(newTaskHistory) // Update State
-        return false // Change sucessfull, no error   
+          let newTaskState = [...this.state.taskState] // copy imutable array
+          newTaskState[i].isFinished = !tsk.isFinished // change ellement
+          this.setState(newTaskState) // Update State
+        return false // Sucess, no error   
       }
     }
-    return true // Failure, return error bool
+    return true // Fail, return error
   }
 
-  // Delet a task because it has been removed in the backend
-  // Trivial sulution is a page refresh
+  // update frontend state when a task has been deleted in the backend
   DeleteTask(name) {
     // Create a new list containing all tasks that does not have name same as the deleted task
-    var filteredlist = this.state.taskHistory.filter(task => task.name !== name)
-    this.setState({taskHistory : filteredlist}) // Update State
+    var filteredlist = this.state.taskState.filter(task => task.name !== name)
+    this.setState({taskState : filteredlist}) // Repace the imutable array
   }
 
   render() {
@@ -107,7 +97,7 @@ class App extends React.Component {
       <div className="App">
         <LocaleContext.Provider value = {languages.no}>
           <Header />
-          <TaskHistory taskHistory={this.state.taskHistory} />
+          <TaskHistory taskState={this.state.taskState} />
           <TaskInput 
             onHasTask={this.hasTask} // https://reactjs.org/docs/thinking-in-react.html
           />
