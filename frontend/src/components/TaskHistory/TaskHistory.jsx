@@ -11,7 +11,7 @@ function TaskHistory(props) {
   // Language support
   let locale = React.useContext(LocaleContext);
   
-  // Map the taskState prop to the tasks ellement
+  // Map the objects in taskState state ellement to a new array of Tasks ellements for display
   const tasks = props.taskState.map(msg => 
     <Task key={msg.name} task = {msg} />);
       

@@ -19,6 +19,7 @@ TODO: description of test
 TODO: Profile the application
 TODO: Implement https -> TODO: Reflect in backend
 
+TODO: Change to Functional components
 TODO: Language support
 
 ###### Test ######

@@ -1,4 +1,3 @@
-//import React, { useState } from "react";
 import React from "react";
 import './App.css';
 
@@ -11,6 +10,8 @@ import Header from './components/Header';
 import TaskHistory from './components/TaskHistory';
 import TaskInput from './components/TaskInput';
 
+import Task from './components/Task';
+
 //Import language support
 import {languages, LocaleContext} from "./locales/Translation";
 
@@ -19,47 +20,44 @@ class App extends React.Component {
   constructor(props) {
     super(props);
       this.state = {taskState: []} // State Task storage
-      this.hasTask = this.hasTask.bind(this) // Bind ellement to application context?
+      this.hasTask = this.hasTask.bind(this) // Bind ellement to application context
   };
 
-  // Aqire a webSocket connection to the backend and mapp the socket endpoint to application state
+  // Aqire a webSocket connection to the backend and mapp the socket endpoint to application state             
   componentDidMount() {
     console.log("Component did mount")
     connect((inp) => { // Mapp message to function
-      // unwrap to message
-      let tskmsg = JSON.parse(inp.data)
+      // unwrap input message to Object
+      let tskObj = JSON.parse(inp.data)
       // m_type: New_Task
-      if (tskmsg.m_type === Message_Type.New_Task){ 
-        if (this.hasTask(tskmsg.name)) { // Fail if task exists
+      if (tskObj.m_type === Message_Type.New_Task){ 
+        if (this.hasTask(tskObj.name)) { // Fail if task exists
           console.log("ERROR: Recived task that allready exists")
         } else { // ok New Task
-          this.setState(prevState => ({ 
-            taskState: [...this.state.taskState, tskmsg]
-            // spread opperator: Coppy and append
-          }))
+          // spread opperator: Coppy and append message object to state array
+          this.setState(prevState => ({ taskState: [...this.state.taskState, tskObj] }))
         }
       } 
       // m_type: Update_Task
-      else if (tskmsg.m_type === Message_Type.Update_Task){
-        let err = this.UpdateTask(tskmsg.name)
-        if (err){ 
-          alert(`____ALERT____\n Update failed!\n`)  
-        }
+      else if (tskObj.m_type === Message_Type.Update_Task){
+        let err = this.UpdateTask(tskObj.name)
+        if (err){ alert(`____ALERT____\n Update failed!\n`) }
       }
       // m_type: Delete_Task
-      else if (tskmsg.m_type === Message_Type.Delete_Task){
-        let err = this.DeleteTask(tskmsg.name)
-        if (err){ 
-          alert(`____ALERT____\n Failed to delete task!\n`)  
-        }
+      else if (tskObj.m_type === Message_Type.Delete_Task){
+        let err = this.DeleteTask(tskObj.name)
+        if (err){ alert(`____ALERT____\n Failed to delete task!\n`)}
       }
       //m_type: fail
       else {
-        alert(`____ALERT____\n Recived unknown message!\n
-        ${tskmsg} \n`)  
+        alert(`____ALERT____\n Recived unknown message!\n ${tskObj} \n`)  
       }
     });
-  }
+    // This code works
+    console.log("creating Task object list");
+    const tasks = this.state.taskState.map(msg => 
+      <Task key={msg.name} task = {msg} />);
+  } 
 
   // Check if a task allready exists
   hasTask(name) {
@@ -70,7 +68,7 @@ class App extends React.Component {
     }
     return false
   }
-
+ 
   // Change the state (isFinished) of a task
   UpdateTask(name) {
     // find task and index
@@ -99,7 +97,7 @@ class App extends React.Component {
           <Header />
           <TaskHistory taskState={this.state.taskState} />
           <TaskInput 
-            onHasTask={this.hasTask} // https://reactjs.org/docs/thinking-in-react.html
+            onHasTask={this.hasTask}
           />
           </LocaleContext.Provider>
       </div>
